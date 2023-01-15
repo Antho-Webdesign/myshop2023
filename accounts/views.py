@@ -20,7 +20,7 @@ def signup(request):
         password2 = request.POST.get("password2")
         if password == password2:
             user = User.objects.create_user(username, email, password)
-            profile = Profile.objects.create(user=user)
+            profile = Profile.objects.create_profile(user=user)
             user.save()
             profile.save()
             login(request, user)
