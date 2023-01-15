@@ -1,4 +1,6 @@
-
 __psycache__
 __pycache__
+*.cython-*
+*.pyc
+
 
