@@ -21,6 +21,7 @@ def signup(request):
         password2 = request.POST.get("password2")
         if password == password2:
             user = Customer.objects.create_user(username, email, password)
+            profile = Profile.objects.create(user=user)
             user.save()
             messages.success(request, 'Your account has been created successfully')
             return redirect('login')

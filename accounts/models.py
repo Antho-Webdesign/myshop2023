@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -23,4 +24,7 @@ class Profile(models.Model):
     class Meta:
         verbose_name_plural = 'Profiles'
         ordering = ('user',)
+
+    def get_absolute_url(self):
+        return reverse('accounts:profile', kwargs={'pk': self.pk})
 

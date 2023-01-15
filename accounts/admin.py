@@ -23,4 +23,3 @@ class CustomerAdmin(UserAdmin):
 admin.site.register(Customer)
 admin.site.register(Profile)
 admin.site.unregister(Group)
-
