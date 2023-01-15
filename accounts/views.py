@@ -11,12 +11,6 @@ User = get_user_model()
 
 # Create your views here.
 def signup(request):
-    products = Product.objects.all()
-    categories = Category.objects.all()
-    context = {
-        'products': products,
-        'categories': categories,
-    }
     # form = UserCreationForm(request.POST)
     # context = {'form': form}
     if request.method == "POST":
@@ -29,18 +23,20 @@ def signup(request):
             profile = Profile.objects.create(user=user)
             user.save()
             profile.save()
-            return redirect('login')
+            login(request, user)
+            return redirect('home')
         else:
-            return redirect('signup')
-    return render(request, 'accounts/signup.html', context)
+            message = "Passwords do not match"
+            msg = {
+                'message': message
+            }
+            msg.update(msg)
+            return render(request, 'accounts/signup.html', msg)
+
+    return render(request, 'accounts/signup.html')
+
 
 def login_user(request):
-    products = Product.objects.all()
-    categories = Category.objects.all()
-    context = { 
-        'products': products,
-        'categories': categories,
-    }
     if request.method == "POST":
         # traiter le formulaire
         username = request.POST.get("username")
@@ -49,7 +45,13 @@ def login_user(request):
         if user := authenticate(request, username=username, password=password):
             login(request, user)
             return redirect('home')
-    return render(request, 'accounts/login.html', context)
+        else:
+            message = "Invalid credentials"
+            msg = {
+                'message': message
+            }
+            return render(request, 'accounts/login.html', msg)
+    return render(request, 'accounts/login.html')
 
 
 def logout_user(request):
@@ -62,7 +64,7 @@ def profile(request):
     profile = get_object_or_404(Profile, user=user)
     products = Product.objects.all()
     categories = Category.objects.all()
-    context = { 
+    context = {
         'products': products,
         'categories': categories,
         'profile': profile,
@@ -131,12 +133,14 @@ def password_reset_form(request):
 
     return render(request, 'accounts/registration/password_reset_form.html')
 
+
 def password_reset_form_done(request):
     return render(request, 'accounts/registration/password_reset_done.html')
+
 
 def password_reset_confirm(request):
     return render(request, 'accounts/registration/password_reset_confirm.html')
 
+
 def password_reset_complete(request):
     return render(request, 'accounts/registration/password_reset_complete.html')
-

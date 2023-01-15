@@ -97,13 +97,15 @@
                     </li>
                 </ul>
 
-                {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
+
+                <li class="nav-item dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         <i class="fa fa-1x fa-user"></i>
                     </a>
+
                     <ul class="dropdown-menu">
+                    {% if user.is_authenticated %}
                         <li>
                             <a class="dropdown-item text-dark text-dropdown" href="{% url 'profile' %}">Profile</a>
                         </li>
@@ -116,27 +118,28 @@
                         <li>
                             <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Logout</a>
                         </li>
-                    </ul>
-                {% else %}
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'login' %}">Login</a>
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Login</a>
                         </li>
-                        <li>
-                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'signup' %}">Register</a>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-dropdown" href="{% url 'signup' %}">Register</a>
                         </li>
+                    {% endif %}
                     </ul>
-                {% endif %}
+                </li>
 
                 {% if user.cart.orders.count >= 1 %}
 
-                        <div class="btn-group dropstart">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false"><i
-                                    class="fa fa-1x fa-cart-plus"></i>({{ user.cart.orders.count }})
-                            </button>
-                            <ul class="dropdown-menu">
-                                {% for order in user.cart.orders.all %}
+                    <div class="btn-group dropstart">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><i
+                                class="fa fa-1x fa-cart-plus"></i>({{ user.cart.orders.count }})
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for order in user.cart.orders.all %}
                                 <li style="display: flex; padding: 5px;">
                                     <a class="dropdown-item text-dark text-dropdown"
                                        href="{% url 'detail' order.product.slug %}">{{ order.product.name }}</a>
@@ -144,9 +147,9 @@
                                        href="{% url 'delete-product-cart' order.product.slug %}"
                                        style="width:auto; padding: 5px;">X</a>
                                 </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 {% endif %}
             </div>
         </div>
