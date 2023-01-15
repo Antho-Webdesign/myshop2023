@@ -1,10 +1,9 @@
-from genericpath import exists
-import random
+from django.contrib import messages
 from django.contrib.auth import get_user_model, logout, login, authenticate
-from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
-from .models import Profile
-from shop.models import Category, Product
+from django.shortcuts import render, redirect, get_object_or_404
+
+from .models import Profile, Customer
 
 User = get_user_model()
 
@@ -13,30 +12,26 @@ User = get_user_model()
 def signup(request):
     # form = UserCreationForm(request.POST)
     # context = {'form': form}
+    user = request.user
     if request.method == "POST":
+        # traiter le formulaire
         username = request.POST.get("username")
         email = request.POST.get("email")
         password = request.POST.get("password")
         password2 = request.POST.get("password2")
         if password == password2:
-            user = User.objects.create_user(username, email, password)
-            profile = Profile.objects.create_profile(user=user)
+            user = Customer.objects.create_user(username, email, password)
             user.save()
-            profile.save()
-            login(request, user)
-            return redirect('home')
+            messages.success(request, 'Your account has been created successfully')
+            return redirect('login')
         else:
-            message = "Passwords do not match"
-            msg = {
-                'message': message
-            }
-            msg.update(msg)
-            return render(request, 'accounts/signup.html', msg)
-
-    return render(request, 'accounts/signup.html')
+            messages.error(request, 'Passwords do not match')
+            return redirect('signup')
+    return render(request, 'accounts/signup.html', {'user': user})
 
 
 def login_user(request):
+    user = request.user
     if request.method == "POST":
         # traiter le formulaire
         username = request.POST.get("username")
@@ -45,13 +40,7 @@ def login_user(request):
         if user := authenticate(request, username=username, password=password):
             login(request, user)
             return redirect('home')
-        else:
-            message = "Invalid credentials"
-            msg = {
-                'message': message
-            }
-            return render(request, 'accounts/login.html', msg)
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login.html', {'user': user})
 
 
 def logout_user(request):
@@ -62,31 +51,16 @@ def logout_user(request):
 def profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
-    products = Product.objects.all()
-    categories = Category.objects.all()
     context = {
-        'products': products,
-        'categories': categories,
         'profile': profile,
     }
-    if request.method == "POST":
-        # traiter le formulaire
-        image = request.FILES.get("image")
-        profile.image = image
-        profile.save()
-        return redirect('profile')
-
     return render(request, 'accounts/profile.html', context)
 
 
 def edit_profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
-    products = Product.objects.all()
-    categories = Category.objects.all()
     context = {
-        'products': products,
-        'categories': categories,
         'profile': profile,
     }
     if request.method == "POST":
