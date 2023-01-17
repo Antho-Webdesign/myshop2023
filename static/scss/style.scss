@@ -75,6 +75,11 @@ a {
     padding: 10px !important;
   }
 
+
+  .dropstart {
+    margin-right: 50px;
+  }
+
 }
 
 li.dropdown:nth-child(2) {
@@ -569,14 +574,16 @@ a.btn {
 }
 
 @media screen and (max-width: 990px) {
+
   .resp {
-    display: block;
+    display: block; // visible sur ecran superieur a 990px
   }
 
   .dropstart {
-    display: none;
+    display: none; // invisible sur ecran superieur a 990px
   }
 
+  /* Box profile */
   .card-profile {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 50px auto;
@@ -617,10 +624,13 @@ a.btn {
     height: 100%;
     line-height: 2;
   }
+  /* !details produit */
 
 }
 
-@media screen and (max-width: 550px) {
+
+/* CSS pour les écrans de mobile */
+@media screen and (max-width: 767px) {
 
   .card {
     display: flex;
@@ -652,8 +662,80 @@ a.btn {
     justify-content: center;
   }
 
+  .container-cart {
+    width: 95%;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 
 
 
+/* CSS pour les écrans d'ordinateur */
+@media screen and (min-width: 1024px) {
+}
+
+/* CSS pour les écrans de tablette */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+}
+
+// CART
+/*
+@media screen and (max-width: 600px) {
+    .container-cart {
+        width: 100%;
+      }
+
+    .table {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        font-size: 0.7em;
+    }
+    .btn-right > a,
+    .btn-left > a {
+        width:90%;
+        font-size: 0.8em;
+    }
+
+}
+
+table.table:nth-child(3) {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: flex-end;
+  border: none;
+}
+
+table.table:nth-child(2) {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.box-btn {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px auto;
+}
+
+.btn-left {
+  width: 33%;
+}
+
+
+.btn-right {
+  width: 33%;
+}
+
+@media (max-width: 600px) {
+  .table {
+    font-size: 0.8em;
+  }
+}
+
+*/
