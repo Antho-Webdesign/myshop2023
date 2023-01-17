@@ -25,6 +25,10 @@ a {
   text-align: center;
 }
 
+label {
+  font-size: 1.5em;
+}
+
 /*
   * ============ NAVIGATION ============ *
 */
@@ -325,12 +329,8 @@ form.card {
 }
 
 /*
-  * ============ page contact_form ============ *
+  * ============ PAGR CONTACT ============ *
 */
-label {
-  font-size: 1.5em;
-}
-
 /*
   * ============ page cart ============ *
 */
@@ -563,6 +563,31 @@ a.btn {
     flex-direction: column;
     width: 60%;
     justify-content: center;
+  }
+  /* details produit */
+  .details_box {
+    margin: 50px auto !important;
+    flex-direction: column;
+  }
+  .box-img {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .container-text {
+    justify-content: center !important;
+    margin: auto;
+  }
+  .product-description {
+    width: 100% !important;
+    margin-bottom: 0;
+  }
+  .prix {
+    margin: 40px auto;
+  }
+  .table-total-price {
+    height: 100%;
+    line-height: 2;
   }
 }
 
