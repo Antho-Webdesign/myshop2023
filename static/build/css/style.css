@@ -24,8 +24,9 @@ a {
   width: 100%;
 }
 
-.navbar-light .navbar-brand {
+.navbar-dark .navbar-brand {
   color: #fff;
+  font-size: 2em !important;
 }
 
 #navbarNavDropdown {
@@ -123,8 +124,7 @@ li.dropdown:nth-child(2) {
 
 form.card {
   background: border-box;
-  padding: 30px;
-  margin: 50px auto;
+  margin: 80px auto;
 }
 
 .row {
@@ -173,6 +173,10 @@ form.card {
   display: flex;
   justify-content: center;
   width: 45%;
+}
+
+.form-control {
+  padding: 10px;
 }
 
 .radius-10 {
