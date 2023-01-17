@@ -1,23 +1,67 @@
-.content-box-product {
-  display: flex;
-  width: 33%;
-}
-
+/*
+  * ============ GENERAL ============ *
+*/
 .box-btn {
   display: flex;
   justify-content: space-between;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #fff !important;
+}
+/*
+  * ============ NAVIGATION ============ *
+*/
+.navbar {
+  background: black !important;
+  color: #fff !important;
+  padding: 20px !important;
+  width: 100%;
+}
+
+.navbar-light .navbar-brand {
+  color: #fff;
 }
 
 #navbarNavDropdown {
   color: #fff;
 }
 
-.card-body {
-  flex-direction: column;
+.text-dropdown {
+  font-size: 1em !important;
 }
 
-.card-box {
-  display: flex !important;
+nav.navbar:nth-child(1) {
+  background-color: black !important;
+  font-size: 1.5em;
+}
+
+a {
+  color: white !important;
+}
+
+/* NAVBAR CAYEGORY */
+@media (min-width: 992px) {
+  .nav-icn {
+    align-items: center;
+  }
+
+  nav.navbar:nth-child(6) {
+    width: 66%;
+    justify-content: center;
+    margin: auto;
+    padding: 10px !important;
+  }
+
+}
+
+li.dropdown:nth-child(2) {
+  display: flex;
+  flex-direction: row;
 }
 
 /*
@@ -48,7 +92,7 @@
   }
 
   .text-dropdown {
-    font-size: 1.3em;
+    font-size: 1.3em !important;
     margin: auto;
   }
 
@@ -63,30 +107,26 @@
   }
 }
 
-.navbar {
-  background: black !important;
-  width: 90%;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-a {
-  color: #fff !important;
-}
-
-#dropdownMenu {
-  color: white;
-}
-
-
-
 /*
   * ============ page index ============ *
 */
+.content-box-product {
+  display: flex;
+  width: 33%;
+}
+
 .card-body {
   width: 50%;
   display: flex;
   margin: auto;
+}
+
+.card-body {
+  flex-direction: column;
+}
+
+.card-box {
+  display: flex !important;
 }
 
 form.card {
@@ -180,14 +220,14 @@ label {
   * ============ page cart ============ *
 */
 
-.product_detail>img:nth-child(2) {
+.product_detail > img:nth-child(2) {
   width: 50%;
   display: flex;
   justify-content: center;
   margin: auto;
 }
 
-.product_detail>p:nth-child(3) {
+.product_detail > p:nth-child(3) {
   text-align: center;
 }
 
@@ -258,7 +298,7 @@ label {
   flex-direction: column;
 }
 
-@media (min-width: 991px) and (max-width:1200px) {
+@media (min-width: 991px) and (max-width: 1200px) {
   .skill-block {
     padding: 32px !important;
   }
@@ -294,29 +334,8 @@ label {
 }
 
 /*
-  * ============ NAVIGATION ============ *
-*/
-.navbar {
-  background: black !important;
-  color: #fff !important;
-}
-
-.navbar-light .navbar-brand {
-  color: #fff;
-}
-
-#navbarNavDropdown {
-  color: #fff;
-}
-
-.text-dropdown {
-  font-size: 1em !important;
-}
-/*
   * ============ PRODUITS ============ *
 */
-
-/* bootstrap | DETAILS PRODUITS */
 .prix {
   margin: 80px 0;
 }
@@ -336,9 +355,6 @@ label {
   width: 80% !important;
   margin-bottom: 50px;
 }
-
-
-/* Élément | http://127.0.0.1:8000/product/air-pods-pro/ */
 
 .detail-btn-add {
   margin: 80px 0;
@@ -392,7 +408,7 @@ label {
   margin: auto !important;
 }
 
-.btn-cart>a {
+.btn-cart > a {
   width: 100%;
 }
 
@@ -410,17 +426,17 @@ a.btn {
 
 
 @media screen and (max-width: 950px) {
-    .card {
-        width: 90% !important;
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        background: transparent;
-        border: none;
-    }
-    .content-box-product {
-        width: 100% !important;
-        margin: 0;
-    }
+  .card {
+    width: 90% !important;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background: transparent;
+    border: none;
+  }
+  .content-box-product {
+    width: 100% !important;
+    margin: 0;
+  }
 
 }

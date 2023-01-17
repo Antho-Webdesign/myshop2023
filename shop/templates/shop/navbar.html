@@ -1,47 +1,6 @@
 {% load static %}
 
 {% block navbar %}
-    <style>
-
-        li {
-            list-style: none;
-        }
-
-        nav.navbar:nth-child(1) {
-            background-color: black !important;
-            font-size: 1.5em;
-        }
-
-        .navbar {
-            padding: 20px !important;
-            width: 100%;
-        }
-
-        a {
-            color: white !important;
-        }
-
-        .text-dropdown {
-            font-size: 0.7em;
-        }
-
-        @media (min-width: 992px) {
-            .nav-icn {
-                align-items: center;
-            }
-
-            nav.navbar:nth-child(6) {
-                width: 66%;
-            }
-
-        }
-
-        li.dropdown:nth-child(2) {
-            display: flex;
-            flex-direction: row;
-        }
-
-    </style>
 
     <nav class="navbar navbar-expand-lg navbar-dark text-light">
         <div class="container-fluid">
@@ -97,11 +56,12 @@
                     </li>
                 </ul>
 
+            <div class="dropstart">
 
                 <li class="nav-item dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        <i class="fa fa-1x fa-user"></i>
+                        <i class="fa fa-2x fa-user"></i>
                     </a>
 
                     <ul class="dropdown-menu">
@@ -116,21 +76,21 @@
                             </li>
                         {% endif %}
                         <li>
-                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Logout</a>
+                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Deconnexion</a>
                         </li>
 
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Login</a>
+                            <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Connexion</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark text-dropdown" href="{% url 'signup' %}">Register</a>
+                            <a class="nav-link text-dark text-dropdown" href="{% url 'signup' %}">Inscription</a>
                         </li>
                     {% endif %}
                     </ul>
                 </li>
-
+            </div>
                 {% if user.cart.orders.count >= 1 %}
 
                     <div class="btn-group dropstart">
@@ -154,6 +114,7 @@
             </div>
         </div>
     </nav>
+
     {% comment %}
 <div class="row header-box" style="background: black;">
     <div class="col-md-12">
