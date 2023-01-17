@@ -56,41 +56,84 @@
                     </li>
                 </ul>
 
-            <div class="dropstart">
+                <div class="dropstart">
 
-                <li class="nav-item dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        <i class="fa fa-2x fa-user"></i>
-                    </a>
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <i class="fa fa-2x fa-user"></i>
+                        </a>
 
-                    <ul class="dropdown-menu">
-                    {% if user.is_authenticated %}
-                        <li>
-                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'profile' %}">Profile</a>
-                        </li>
+                        <ul class="dropdown-menu">
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item text-dark text-dropdown"
+                                       href="{% url 'profile' %}">Profile</a>
+                                </li>
 
-                        {% if user.cart.orders.count >= 1 %}
-                            <li>
-                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'cart' %}">Panier</a>
-                            </li>
-                        {% endif %}
-                        <li>
-                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Deconnexion</a>
-                        </li>
+                                {% if user.cart.orders.count >= 1 %}
+                                    <li>
+                                        <a class="dropdown-item text-dark text-dropdown"
+                                           href="{% url 'cart' %}">Panier</a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Deconnexion</a>
+                                </li>
 
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Connexion</a>
-                        </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Connexion</a>
+                                </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark text-dropdown" href="{% url 'signup' %}">Inscription</a>
-                        </li>
-                    {% endif %}
-                    </ul>
-                </li>
-            </div>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark text-dropdown"
+                                       href="{% url 'signup' %}">Inscription</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+
+                </div>
+
+            <div class="dropdown resp">
+
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <i class="fa fa-2x fa-user"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item text-dark text-dropdown"
+                                       href="{% url 'profile' %}">Profile</a>
+                                </li>
+
+                                {% if user.cart.orders.count >= 1 %}
+                                    <li>
+                                        <a class="dropdown-item text-dark text-dropdown"
+                                           href="{% url 'cart' %}">Panier</a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Deconnexion</a>
+                                </li>
+
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Connexion</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark text-dropdown"
+                                       href="{% url 'signup' %}">Inscription</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </div>
                 {% if user.cart.orders.count >= 1 %}
 
                     <div class="btn-group dropstart">

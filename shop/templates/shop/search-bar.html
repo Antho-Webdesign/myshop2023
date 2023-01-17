@@ -1,65 +1,44 @@
 {% load static %}
 
 {% block search %}
-<style>
+    <style>
 
-form.card {
-    width: 66%;
-}
-#search {
- width: 66%;
- justify-content: center;
- margin: auto !important;
- display: flex;
-}
-
-nav.navbar:nth-child(7) {
-  display: flex;
-  width: 100%;
-  background: black;
-  justify-content: center;
-  margin: 0;
-  padding: 5px !important;
-  font-size: 0.9em;
-}
-
-
-</style>
+    </style>
     <!-- Search Bar -->
-        <div class="col-md-12">
-            <form class="card card-sm bg-dark" style="border: none; display: flex; justify-content: center">
-                <div class="align-items-center" style="display:flex;">
+    <div class="col-md-12">
+        <form class="card card-sm bg-dark" style="border: none; display: flex; justify-content: center">
+            <div class="align-items-center" style="display:flex;">
 
-                        <input type="search" placeholder="Entrez le nom du produits" name="search" id="search"
-                            class="form-control form-control-borderless searchbar m-0">
-                        <button type="submit" class="btn btn-success">Recherche</button>
+                <input type="search" placeholder="Entrez le nom du produits" name="search" id="search"
+                       class="form-control form-control-borderless searchbar m-0">
+                <button type="submit" class="btn btn-search btn-success">Recherche</button>
 
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
+    </div>
 
-<!--Navbar-->
+    <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5 p-3">
 
         <!-- Navbar brand -->
         <span class="navbar-brand">Categories:</span>
 
         <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
+        <div class="collapse navbar-collapse" id="navbarScroll">
 
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
                 {% for category in categories %}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'category' category.slug %}">{{ category.name}}</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'category' category.slug %}">{{ category.name }}</a>
+                    </li>
 
                 {% endfor %}
             </ul>
