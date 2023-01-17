@@ -12,6 +12,9 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="form-group">
+                        <label for="username">Pseudo</label>
+                        <input type="text" class="form-control mb-2" id="username" name="username" value="{{ user.username }}">
+
                         <label for="first_name">Prénom</label>
                         <input type="text" class="form-control mb-2" id="first_name" name="first_name" value="{{ user.first_name }}">
 
@@ -33,6 +36,9 @@
                         <label for="zip_code">Code postal</label>
                         <input type="text" class="form-control mb-2" id="zip_code" name="zip_code" value="{{ user.zip_code }}">
 
+                        <label for="state">Region</label>
+                        <input type="text" class="form-control mb-2" id="state" name="state" value="{{ user.state }}">
+
                         <label for="country">Pays</label>
                         <input type="text" class="form-control" id="country" name="country" value="{{ user.country }}">
 
@@ -42,9 +48,13 @@
                         <label for="password2">Confirmer le mot de passe</label>
                         <input type="password" class="form-control mb-2" id="password2" name="password2">
 
+                        <label for="image">Image de profil</label>
+                        <input type="file" name="image" id="image" value="Modifier" class="form-control"/>
+
                         <button type="submit" class="btn btn-primary mt-3">Modifier</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

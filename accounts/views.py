@@ -74,6 +74,7 @@ def edit_profile(request):
         zip_code = request.POST.get("zip_code")
         state = request.POST.get("state")
         country = request.POST.get("country")
+        image = request.FILES.get("image")
         user.username = username
         user.email = email
         profile.phone = phone
@@ -82,6 +83,7 @@ def edit_profile(request):
         profile.zip_code = zip_code
         profile.state = state
         profile.country = country
+        profile.image = image
         message = "Your profile has been updated successfully"
         msg = {
             'message': message,
