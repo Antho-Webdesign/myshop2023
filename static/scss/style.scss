@@ -1,3 +1,7 @@
+.bg-light {
+  background-color: #fff !important;
+}
+
 /*
   * ============ GENERAL ============ *
 */
@@ -268,6 +272,10 @@ form.card {
   border-radius: 50px;
 }
 
+.form-lbl {
+  font-weight: bold;
+}
+
 .updt-profile {
   justify-content: center;
   display: flex;
@@ -328,7 +336,7 @@ form.card {
 
 .form-updt-img-profile {
   background: #fff;
-  margin: 45px auto;
+  padding: 45px 0;
 }
 
 .btn-profile-valider {
@@ -337,11 +345,24 @@ form.card {
 
 .input--updt-img-profile {
   font-size: 1.5em;
+  width: 80%;
+  justify-content: center;
+  margin: auto;
 }
 
 .card-text-profile {
   font-size: 1.5em;
   background: #fff !important;
+}
+
+.btn-updt-img {
+  background: darkorange;
+  width: 33%;
+  font-weight: bold;
+}
+
+tr.table-profile {
+  font-size: 0.8em;
 }
 
 /*

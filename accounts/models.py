@@ -10,8 +10,8 @@ class Customer(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(Customer, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='prod/profile_img/', default='prod/profile_img/default.png',
-                              blank=True, null=True)
+    image_profile = models.ImageField(upload_to='prod/profile_img/', default='prod/profile_img/default.png',
+                                      blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True)
     address = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=100, blank=True)
@@ -28,4 +28,3 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse('profile', kwargs={'pk': self.pk})
-

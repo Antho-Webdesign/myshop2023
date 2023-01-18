@@ -9,25 +9,62 @@
         <h1 class="titre">Mon profile</h1>
     </div>
     <div class="card-profile text-dark">
-        <img src="{{ profile.image.url }}" alt="John" style="width:100%">
-        <form method="post" enctype="multipart/form-data" class="bg-light">
+        <img src="{{ user.profile.image_profile.url }}" alt="{{ profile.image_profile.name }}" style="width:100%">
+        <form method="post" enctype="multipart/form-data" class="bg-light form-updt-img-profile">
             {% csrf_token %}
-            <label for="image">Image de profil</label>
-            <input type="file" name="image" id="image" value="Modifier" class="form-control"/>
-            <input type="submit" value="Valider" class="btn btn-primary"/>
+            <label class="form-lbl mb-5" for="image_profile">Modifier mon image de profil</label>
+            <input type="file" name="image_profile" id="image_profile" value="{{ profile.image_profile }}"
+                   class="form-control mb-5 input-updt-img-profile"/>
+            <input type="submit" value="Valider" class="btn btn-updt-img"/>
         </form>
 
         <div class="card-text-profile">
-            <h1>{{ profile.user.username }}</h1>
-            <p>{{ profile.user.email }}</p>
-            <p>{{ profile.phone }}</p>
-            <p>{{ profile.address }}</p>
-            <p>{{ profile.city }}</p>
+            <table class="table table-striped text-light">
+                <tbody>
+                <tr class="table-profile">
+                    <th>Pseudo</th>
+                    <td>{{ profile.user.username }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Nom</th>
+                    <td>{{ profile.user.last_name }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Prénom</th>
+                    <td>{{ profile.user.first_name }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Email</th>
+                    <td>{{ profile.user.email }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Téléphone</th>
+                    <td>{{ profile.phone }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Adresse</th>
+                    <td>{{ profile.address }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Code postal</th>
+                    <td>{{ profile.zip_code }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Ville</th>
+                    <td>{{ profile.city }}</td>
+                </tr>
+                <tr class="table-profile">
+                    <th>Pays</th>
+                    <td>{{ profile.country }}</td>
+                </tr>
+                </tbody>
+            </table>
 
             {% if profile.user.is_active %}
                 <p class="text-success">Active</p>
             {% else %}
                 <p class="text-warning">Not active</p>
+
             {% endif %}
             <a class="btn updt-profile" href="{% url 'edit-profile' %}">
                 <button class="btn updt-profile btn-info fs-5">Modifier mon profile</button>

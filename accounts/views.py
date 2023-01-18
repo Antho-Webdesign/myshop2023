@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, logout, login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -44,11 +45,13 @@ def login_user(request):
     return render(request, 'accounts/login.html', {'user': user})
 
 
+@login_required
 def logout_user(request):
     logout(request)
     return redirect('home')
 
 
+@login_required
 def profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
@@ -57,23 +60,25 @@ def profile(request):
     }
     if request.method == "POST":
         # traiter le formulaire
-        image = request.FILES.get("image")
-        profile.image = image
+        image_profile = request.FILES.get("image_profile")
+        profile.image_profile = image_profile
         profile.save()
+        messages.success(request, 'Your profile has been updated successfully')
         return redirect('profile')
 
     return render(request, 'accounts/profile.html', context)
 
 
+@login_required
 def edit_profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
-    context = {
-        'profile': profile,
-    }
+
     if request.method == "POST":
         # traiter le formulaire
         username = request.POST.get("username")
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
         email = request.POST.get("email")
         phone = request.POST.get("phone")
         address = request.POST.get("address")
@@ -81,26 +86,26 @@ def edit_profile(request):
         zip_code = request.POST.get("zip_code")
         state = request.POST.get("state")
         country = request.POST.get("country")
-        image = request.FILES.get("image")
+
         user.username = username
+        user.first_name = first_name
+        user.last_name = last_name
         user.email = email
+        user.save()
+
         profile.phone = phone
         profile.address = address
         profile.city = city
         profile.zip_code = zip_code
         profile.state = state
         profile.country = country
-        profile.image = image
-        message = "Your profile has been updated successfully"
-        msg = {
-            'message': message,
-        }
-        context.update(msg)
-
-        user.save()
         profile.save()
-
         return redirect('profile')
+
+    context = {
+        'profile': profile,
+    }
+
     return render(request, 'accounts/profile_update.html', context)
 
 
