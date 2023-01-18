@@ -3,3 +3,4 @@ __psycache__
 *.cython-*
 *.pyc
 .DS_Store
+*.xml
