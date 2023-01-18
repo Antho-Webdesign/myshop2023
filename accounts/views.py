@@ -55,6 +55,13 @@ def profile(request):
     context = {
         'profile': profile,
     }
+    if request.method == "POST":
+        # traiter le formulaire
+        image = request.FILES.get("image")
+        profile.image = image
+        profile.save()
+        return redirect('profile')
+
     return render(request, 'accounts/profile.html', context)
 
 

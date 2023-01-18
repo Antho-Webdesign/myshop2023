@@ -2,32 +2,38 @@
 {% load static %}
 
 {% block content %}
-<style>
+    <style>
 
-</style>
+    </style>
     <div>
         <h1 class="titre">Mon profile</h1>
     </div>
-<div class="card-profile text-dark">
-    <img src="{{ profile.image.url }}" alt="John" style="width:100%">
+    <div class="card-profile text-dark">
+        <img src="{{ profile.image.url }}" alt="John" style="width:100%">
+        <form method="post" enctype="multipart/form-data" class="bg-light">
+            {% csrf_token %}
+            <label for="image">Image de profil</label>
+            <input type="file" name="image" id="image" value="Modifier" class="form-control"/>
+            <input type="submit" value="Valider" class="btn btn-primary"/>
+        </form>
 
-<div class="card-text-profile">
-    <h1>{{ profile.user.username }}</h1>
-    <p>{{ profile.user.email }}</p>
-    <p>{{ profile.phone }}</p>
-    <p>{{ profile.address }}</p>
-    <p>{{ profile.city }}</p>
+        <div class="card-text-profile">
+            <h1>{{ profile.user.username }}</h1>
+            <p>{{ profile.user.email }}</p>
+            <p>{{ profile.phone }}</p>
+            <p>{{ profile.address }}</p>
+            <p>{{ profile.city }}</p>
 
-    {% if profile.user.is_active %}
-    <p class="text-success">Active</p>
-    {% else %}
-    <p class="text-warning">Not active</p>
-    {% endif %}
-    <a class="btn updt-profile" href="{% url 'edit-profile' %}">
-        <button class="btn updt-profile btn-info fs-5">Modifier mon profile</button>
-    </a>
-</div>
-</div>
+            {% if profile.user.is_active %}
+                <p class="text-success">Active</p>
+            {% else %}
+                <p class="text-warning">Not active</p>
+            {% endif %}
+            <a class="btn updt-profile" href="{% url 'edit-profile' %}">
+                <button class="btn updt-profile btn-info fs-5">Modifier mon profile</button>
+            </a>
+        </div>
+    </div>
 {% endblock %}
 
 {% comment %}
