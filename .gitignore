@@ -1,7 +1,5 @@
 __psycache__
-__pycache__
+/__pycache__/
 *.cython-*
 *.pyc
-
-
 .DS_Store
