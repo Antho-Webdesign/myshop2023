@@ -1,43 +1,23 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
-<style>
 
-.product_details_box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.details_box {
-  display: flex;
-  width: 90%;
-  justify-content: center;
-  margin: auto;
-}
-
-.container-text {
-  margin: auto;
-}
-
-.separateur {
-  justify-content: center;
-  margin: auto;
-}
-
-</style>
 
 <div class="product_details_box bg-gradient">
 
-    <h1 class="text-center titre-detail mt-5 mb-5">
+    <h1 class="text-center titre-detail pt-4 mb-5">
         Bienvenue dans l'univers de : 
         <br>
         <span class="text-info fw-bold fst-italic" style="font-size: 1.5em;">
         {{ product.marque_produit }}</span>
     </h1>
+
     <!-- separateur -->
-    <div class="separateur border border-1" style="display: flex; width: 80%;">
+    <div class="separateur border border-1">
     </div>
+
     <div class="details_box">
+
         <div class="col-md-6 container-img" style="display: flex; justify-content: center;">
             <div class="box-img">
                 <img src="{{ product.image.url }}" class="img-detail" alt="">
@@ -59,15 +39,29 @@
                 Prix : {{ price_ttc }}€ <small class="text-muted">TTC</small>
             </div>
 
-            {% if user.is_authenticated %}
-                <a class="detail-btn-add" href="{% url 'add_to_cart' product.slug %}">
-                    <button class="btn btn-success add-cart">Ajouter au panier</button>
-                </a>
-            {% else %}
-                <p class="bg-gradient fs-5 mt-5">
-                    <a class="text-warning" href="{% url 'login' %}">Connectez-vous pour ajouter au panier</a>
-                </p>
-            {% endif %}
+                <div class="box-btn">
+                    {% if user.is_authenticated %}
+                        <div class="btn-left-index">
+                            <a class="btn btn-success" href="{% url 'add_to_cart' product.slug %}">
+                               Ajouter au panier
+                            </a>
+                        </div>
+
+                        {% if user.is_authenticated %}
+                        <div class="btn-right-index">
+                            <a href="{% url 'home' %}" class="btn btn-info">
+                                Retour à l'accueil
+                            </a>
+                        </div>
+                        {% else %}
+                             <p class="bg-gradient fs-5 mt-5">
+                                <a class="text-warning" href="{% url 'login' %}">Connectez-vous pour ajouter au panier</a>
+                            </p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+
 
         </div>
     </div>

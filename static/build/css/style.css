@@ -34,6 +34,13 @@ label {
   font-size: 1.5em;
 }
 
+.separateur {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 80%;
+}
+
 /*
   * ============ NAVIGATION ============ *
 */
@@ -226,8 +233,15 @@ form.card {
 form.card {
   border: none;
   display: flex;
-  justify-content: center;
-  width: 45%;
+  justify-content: space-around;
+  width: 66%;
+}
+
+.card-box-searchbar {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 66%;
 }
 
 .form-control {
@@ -236,6 +250,41 @@ form.card {
 
 .radius-10 {
   border-radius: 10px;
+}
+
+.card {
+  width: 66%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background: transparent;
+  border: none;
+}
+
+.card-body {
+  flex-direction: column;
+  width: 50%;
+  display: flex;
+  margin: auto;
+}
+
+.box-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.box-product {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.content-box-product {
+  display: flex;
+  width: 33%;
+  margin: auto;
 }
 
 /*
@@ -476,7 +525,6 @@ tr.table-profile {
 
 .titre-detail {
   margin-bottom: 5rem !important;
-  margin-top: 50px;
 }
 
 .details_box {
@@ -529,14 +577,14 @@ tr.table-profile {
 }
 
 .btn-left-index {
-  width: 90%;
+  width: 45%;
   display: flex !important;
   justify-content: center !important;
   margin: auto !important;
 }
 
 .btn-right-index {
-  width: 90%;
+  width: 45%;
   display: flex !important;
   justify-content: center !important;
   margin: auto !important;
@@ -547,7 +595,7 @@ tr.table-profile {
 }
 
 button.btn {
-  width: 100%;
+  width: 25%;
 }
 
 a.btn {
@@ -573,7 +621,23 @@ a.btn {
   }
 }
 
-@media screen and (max-width: 990px) {
+.text-warning {
+  margin: 50px auto;
+}
+
+.product-description {
+  margin: 50px;
+}
+
+.prix {
+  margin: 50px;
+}
+
+.detail-btn-add {
+  margin: 50px 0;
+}
+
+@media screen and (max-width: 1023px) {
   .resp {
     display: block;
   }
@@ -587,7 +651,7 @@ a.btn {
     text-align: center;
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 85%;
     justify-content: center;
   }
   /* details produit */
@@ -615,7 +679,15 @@ a.btn {
     height: 100%;
     line-height: 2;
   }
-  /* !details produit */
+  .container-text {
+    /* margin: auto; */
+    margin: 0 !important;
+    width: 90%;
+  }
+  .product-description {
+    margin: 0;
+    /* !details produit */
+  }
 }
 
 /* CSS pour les écrans de mobile */
@@ -653,10 +725,37 @@ a.btn {
     display: flex;
     flex-direction: column;
   }
+  /* details produit */
+  .details_box {
+    margin: 50px auto !important;
+    flex-direction: column;
+  }
 }
 
 /* CSS pour les écrans d'ordinateur */
 /* CSS pour les écrans de tablette */
+@media screen and (min-width: 766px) and (max-width: 1023px) {
+  .card-body {
+    width: 100% !important;
+  }
+  .card-body {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .content-box-product {
+    width: 100% !important;
+    margin: 0;
+  }
+  form.card {
+    width: 90% !important;
+  }
+  .card-body {
+    width: 100% !important;
+  }
+}
+
 /*
 @media screen and (max-width: 600px) {
     .container-cart {
