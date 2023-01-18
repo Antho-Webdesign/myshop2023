@@ -426,7 +426,7 @@ tr.table-profile {
 
 .total-price,
 .total-tva {
-  font-size: 0.5em;
+  font-size: 0.7em;
   text-align: end;
   font-style: italic;
 }
@@ -434,6 +434,7 @@ tr.table-profile {
 .table-total-price {
   display: flex;
   justify-content: end;
+  margin: 30px auto !important;
 }
 
 .table-total-price {

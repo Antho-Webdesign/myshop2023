@@ -247,10 +247,10 @@ form.card {
 }
 
 .card-box-searchbar {
- display:flex;
- justify-content: space-around;
- margin: auto;
- width: 66%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 66%;
 }
 
 
@@ -440,7 +440,7 @@ tr.table-profile {
 
 .total-price,
 .total-tva {
-  font-size: 0.5em;
+  font-size: 0.7em;
   text-align: end;
   font-style: italic;
 }
@@ -448,6 +448,7 @@ tr.table-profile {
 .table-total-price {
   display: flex;
   justify-content: end;
+  margin: 30px auto !important;
 }
 
 .table-total-price {
@@ -803,6 +804,7 @@ a.btn {
     width: 100% !important;
   }
 }
+
 // CART
 /*
 @media screen and (max-width: 600px) {
