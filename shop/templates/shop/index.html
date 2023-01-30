@@ -37,7 +37,7 @@
                         <div class="box-btn">
 
                             <div class="btn-left-index">
-                                <a href="{% url 'detail' product.slug %}" class="btn btn-index btn-primary">Détails</a>
+                                <a href="{% url 'detail' product.slug %}" class="btn btn-index btn-info">Détails</a>
                             </div>
 
                             {% if user.is_authenticated %}
@@ -46,7 +46,7 @@
                                 </div>
                             {% else %}
                                 <div class="btn-right-index">
-                                    <a href="{% url 'login' %}" class="btn btn-index btn-primary">Connectez vous !</a>
+                                    <a href="{% url 'login' %}" class="btn btn-index btn-warning">Connectez vous !</a>
                                 </div>
                             {% endif %}
 

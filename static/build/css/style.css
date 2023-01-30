@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .bg-light {
   background-color: #fff !important;
 }
@@ -77,26 +78,21 @@ a {
   .nav-icn {
     align-items: center;
   }
-
   nav.navbar:nth-child(6) {
     width: 66%;
     justify-content: center;
     margin: auto;
     padding: 10px !important;
   }
-
-
   .dropstart {
     margin-right: 50px;
   }
-
 }
 
 li.dropdown:nth-child(2) {
   display: flex;
   flex-direction: row;
 }
-
 
 /*
   * ============ PAGE SEARCHBAR ============ *
@@ -137,11 +133,9 @@ nav.navbar:nth-child(7) {
   .titre-principale {
     font-size: 2em;
   }
-
   .navbar-expand-lg .navbar-nav {
     font-size: 1.2em;
   }
-
   .header-box {
     background: black;
     width: 100%;
@@ -149,23 +143,19 @@ nav.navbar:nth-child(7) {
     font-size: 1.2em;
     padding: 15px;
   }
-
   .footer-box {
     background: black;
     width: 100%;
     margin: 0;
   }
-
   .text-dropdown {
     font-size: 1.3em !important;
     margin: auto;
   }
-
   .nav-icn {
     display: flex;
     margin: auto 50px;
   }
-
   #navbarNavDropdown {
     justify-content: flex-end;
     margin: auto 50px auto 0;
@@ -247,7 +237,6 @@ form.card {
   width: 66%;
 }
 
-
 .form-control {
   padding: 10px;
 }
@@ -262,7 +251,7 @@ form.card {
   justify-content: center;
   margin: auto;
   background: transparent;
-  border: none
+  border: none;
 }
 
 .box-btn {
@@ -329,7 +318,6 @@ form.card {
   justify-content: center;
   margin: 30px auto;
 }
-
 
 .card-profile {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -403,12 +391,9 @@ tr.table-profile {
 /*
   * ============ PAGR CONTACT ============ *
 */
-
-
 /*
   * ============ page cart ============ *
 */
-
 .product_detail > img:nth-child(2) {
   width: 50%;
   display: flex;
@@ -445,7 +430,6 @@ tr.table-profile {
 /*
   * ============ page cart ============ *
 */
-
 .bg-black {
   background: #000;
 }
@@ -494,7 +478,6 @@ tr.table-profile {
   }
 }
 
-
 @media (min-width: 1200px) {
   .container-cart {
     width: 66%;
@@ -502,7 +485,6 @@ tr.table-profile {
     margin: auto;
     display: flex;
   }
-
   .skill-block {
     padding: 56px !important;
   }
@@ -515,12 +497,10 @@ tr.table-profile {
     margin: auto;
     display: flex;
   }
-
   .table {
     font-size: 1em;
     width: 100%;
   }
-
 }
 
 /*
@@ -557,7 +537,6 @@ tr.table-profile {
 /*
   * ============ BTN:cart, index, etc ============ *
 */
-
 .box-btn {
   display: flex;
   justify-content: space-around;
@@ -610,7 +589,6 @@ button.btn {
   width: 66% !important;
 }
 
-
 @media screen and (min-width: 750px) and (max-width: 950px) {
   .card {
     width: 90% !important;
@@ -626,7 +604,6 @@ button.btn {
   }
 }
 
-// detail produit
 .text-warning {
   margin: 50px auto;
 }
@@ -644,15 +621,12 @@ button.btn {
 }
 
 @media screen and (max-width: 1023px) {
-
   .resp {
-    display: block; // visible sur ecran superieur a 990px
+    display: block;
   }
-
   .dropstart {
-    display: none; // invisible sur ecran superieur a 990px
+    display: none;
   }
-
   /* Box profile */
   .card-profile {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -663,38 +637,31 @@ button.btn {
     width: 85%;
     justify-content: center;
   }
-
   /* details produit */
   .details_box {
     margin: 50px auto !important;
     flex-direction: column;
   }
-
   .box-img {
     margin: auto;
     display: flex;
     justify-content: center;
   }
-
   .container-text {
     justify-content: center !important;
     margin: auto;
   }
-
   .product-description {
     width: 100% !important;
     margin-bottom: 0;
   }
-
   .prix {
     margin: 40px auto;
   }
-
   .table-total-price {
     height: 100%;
     line-height: 2;
   }
-
   .container-text {
     /* margin: auto; */
     margin: 0 !important;
@@ -706,10 +673,8 @@ button.btn {
   }
 }
 
-
 /* CSS pour les écrans de mobile */
 @media screen and (max-width: 767px) {
-
   .card {
     display: flex;
     width: 85%;
@@ -717,7 +682,6 @@ button.btn {
     margin: auto;
     max-width: none;
   }
-
   .box-prfl {
     display: flex !important;
     flex-direction: column !important;
@@ -725,11 +689,9 @@ button.btn {
     align-items: center;
     width: 100%;
   }
-
   .skill-block {
     width: 100%;
   }
-
   .card-profile {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 50px auto;
@@ -739,7 +701,6 @@ button.btn {
     width: 90%;
     justify-content: center;
   }
-
   .container-cart {
     width: 95%;
     justify-content: center;
@@ -747,7 +708,6 @@ button.btn {
     display: flex;
     flex-direction: column;
   }
-
   /* details produit */
   .details_box {
     margin: 50px auto !important;
@@ -756,35 +716,26 @@ button.btn {
 }
 
 /* CSS pour les écrans d'ordinateur */
-@media screen and (min-width: 1024px) {
-}
-
 /* CSS pour les écrans de tablette */
 @media screen and (min-width: 766px) and (max-width: 1023px) {
-
   .card-body {
     width: 100% !important;
   }
-
 }
 
 @media screen and (max-width: 765px) {
-
   .content-box-product {
     width: 100% !important;
     margin: 0;
   }
-
   form.card {
     width: 90% !important;
   }
-
   .card-body {
     width: 100% !important;
   }
 }
 
-// CART
 /*
 @media screen and (max-width: 600px) {
     .container-cart {
