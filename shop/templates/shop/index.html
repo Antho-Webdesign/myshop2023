@@ -1,60 +1,66 @@
 {% extends "shop/base.html" %}
 
 {% block content %}
-<style>
+    <style>
 
-</style>
-<!-- Search Bar -->
-{% include 'shop/search-bar.html' %}
-{% block search %}
-{% endblock %}
+.btn-index {
+  width: 90%;
+}
 
-<div class="box-product">
+    </style>
+    <!-- Search Bar -->
+    {% include 'shop/search-bar.html' %}
+    {% block search %}
+    {% endblock %}
 
-    {% for product in page_obj %}
-    <div class="content-box-product">
-        <div class="card">
-            <div id="aa{{ product.id }}" class="card-title">
-                <p class="radius-10 text-center fs-5 fst-italic text-info bg-gradient"> {{ product.marque_produit }}</p>
-                <h1 class="text-center product-title radius-10 text-light fw-semibold">{{ product.name }}</h1>
-            </div>
+    <div class="box-product">
 
-            <img src="{{ product.image.url }}" alt="" class="card-ing-top" style="width: 66%;margin: auto;">
+        {% for product in page_obj %}
+            <div class="content-box-product">
+                <div class="card">
+                    <div id="aa{{ product.id }}" class="card-title">
+                        <p class="radius-10 text-center fs-5 fst-italic text-info bg-gradient"> {{ product.marque_produit }}</p>
+                        <h1 class="text-center product-title radius-10 text-light fw-semibold">{{ product.name }}</h1>
+                    </div>
 
-            <div class="card-body">
-                <div id="price price{{ product.id }}" class="card-text mb-5 fw-bold fs-3 text-center text-danger">
-                    Prix (ttc): 
-                    <br>
-                    {{ product.ttc_price|floatformat:2 }} €
+                    <img src="{{ product.image.url }}" alt="" class="card-ing-top" style="width: 66%;margin: auto;">
+
+                    <div class="card-body" style="  width: 100% !important; display: flex; margin: auto 0; flex-direction: column;">
+
+                        <div id="price price{{ product.id }}"
+                             class="card-text mb-5 fw-bold fs-3 text-center text-danger">
+                            Prix (ttc):
+                            <br>
+                            {{ product.ttc_price|floatformat:2 }} €
+                        </div>
+
+                        <div class="box-btn">
+
+                            <div class="btn-left-index">
+                                <a href="{% url 'detail' product.slug %}" class="btn btn-index btn-warning">Détails</a>
+                            </div>
+
+                            {% if user.is_authenticated %}
+                                <div class="btn-right-index">
+                                    <a href="{% url 'add_to_cart' product.slug %}" class="btn btn-index btn-success">Acheter</a>
+                                </div>
+                            {% else %}
+                                <div class="btn-right-index">
+                                    <a href="{% url 'login' %}" class="btn btn-index btn-info">Connectez vous !</a>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
                 </div>
-                
-                <div class="box-btn">
-
-                    <div class="btn-left-index">
-                        <a href="{% url 'detail' product.slug %}" class="btn btn-warning">Détails</a>
-                    </div>
-
-                    {% if user.is_authenticated %}
-                    <div class="btn-right-index">
-                        <a href="{% url 'add_to_cart' product.slug %}" class="btn btn-success">Acheter</a>
-                    </div>
-                    {% else %}
-                    <div class="btn-right-index">
-                        <a href="{% url 'login' %}" class="btn btn-info">Connectez vous !</a>
-                    </div>
-                    {% endif %}
-
-                </div>
             </div>
-
-        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 
-<!-- include pagination.html -->
-{% include 'shop/pagination.html' %}
-{% block pagination %}
-{% endblock %}
+    <!-- include pagination.html -->
+    {% include 'shop/pagination.html' %}
+    {% block pagination %}
+    {% endblock %}
 
 {% endblock %}

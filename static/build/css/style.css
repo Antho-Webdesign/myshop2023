@@ -171,12 +171,9 @@ nav.navbar:nth-child(7) {
 }
 
 .card-body {
-  width: 50%;
+  width: 100% !important;
   display: flex;
-  margin: auto;
-}
-
-.card-body {
+  margin: auto 0;
   flex-direction: column;
 }
 
@@ -194,10 +191,6 @@ form.card {
   justify-content: space-around;
   width: 100%;
   margin: 0;
-}
-
-.card-body {
-  flex-direction: column;
 }
 
 .no-gutters {
@@ -259,13 +252,6 @@ form.card {
   margin: auto;
   background: transparent;
   border: none;
-}
-
-.card-body {
-  flex-direction: column;
-  width: 50%;
-  display: flex;
-  margin: auto;
 }
 
 .box-btn {
@@ -599,10 +585,6 @@ button.btn {
   width: 25%;
 }
 
-a.btn {
-  width: 100%;
-}
-
 .add-cart {
   width: 66% !important;
 }
@@ -736,9 +718,6 @@ a.btn {
 /* CSS pour les écrans d'ordinateur */
 /* CSS pour les écrans de tablette */
 @media screen and (min-width: 766px) and (max-width: 1023px) {
-  .card-body {
-    width: 100% !important;
-  }
   .card-body {
     width: 100% !important;
   }
