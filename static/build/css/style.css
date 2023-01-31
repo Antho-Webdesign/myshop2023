@@ -736,6 +736,12 @@ button.btn {
   }
 }
 
+@media screen and (max-width: 455px) {
+  .updt-profile {
+    width: 66% !important;
+  }
+}
+
 /*
 @media screen and (max-width: 600px) {
     .container-cart {
