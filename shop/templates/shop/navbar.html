@@ -1,6 +1,19 @@
 {% load static %}
 
 {% block navbar %}
+<style>
+
+button.btn {
+  background: transparent;
+  border: none;
+}
+
+div.dropstart:nth-child(2) > li:nth-child(1) > a:nth-child(1) {
+  background: transparent;
+  border: none;
+}
+
+</style>
 
     <nav class="navbar navbar-expand-lg navbar-dark text-light">
         <div class="container-fluid">
@@ -101,7 +114,7 @@
                     <li class="nav-item dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fa fa-2x fa-user"></i>
+                            <i class="fa fa-user"></i>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -138,8 +151,9 @@
 
                     <div class="btn-group dropstart">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><i
-                                class="fa fa-2x fa-cart-plus"></i>({{ user.cart.orders.count }})
+                                aria-expanded="false">
+                            <i class="fa fa-2x fa-shopping-cart"></i>
+                            <span>cart( {{ user.cart.orders.count }} )</span>
                         </button>
                         <ul class="dropdown-menu">
                             {% for order in user.cart.orders.all %}
