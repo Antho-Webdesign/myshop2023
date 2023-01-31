@@ -59,6 +59,7 @@ class Product(models.Model):
     def ttc_price(self):
         return self.price * 1.2
 
+
 ''' 
 class ProductListView(ListView):
     paginate_by = 4
@@ -99,7 +100,6 @@ class Order(models.Model):
 - Quantité integer
 - Commandé ou non boolean
 """
-
 
 
 class Cart(models.Model):
@@ -145,6 +145,7 @@ class ContactFormModelMixin(models.Model):
 
     def __str__(self):
         return self.full_name
+
     class Meta:
         verbose_name = "Contact"
         verbose_name_plural = "Contacts"

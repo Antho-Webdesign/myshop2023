@@ -11,6 +11,7 @@ def base(request):
     item = items.id
     return render(request, 'shop/base.html', context={"items": items, "item": item})
 
+
 def navbar(request):
     user = request.user
     products = Product.objects.all()
@@ -21,6 +22,7 @@ def navbar(request):
         'categories': categories,
     }
     return render(request, 'shop/navbar.html', context)
+
 
 def tva(request):
     ttc = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())
@@ -49,10 +51,9 @@ def index(request):
         if request.method == 'GET':
             products = Product.objects.filter(name__icontains=name)
 
-    paginator = Paginator(products, 4)
+    paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
 
     context = {
         'products': products,
@@ -159,7 +160,7 @@ def checkout(request):
     products = Product.objects.all()
     categories = Category.objects.all()
     total = sum(order.product.price *
-                    order.quantity for order in request.user.cart.orders.all())
+                order.quantity for order in request.user.cart.orders.all())
     total_tva = tva(request)
     total_ttc = total + total_tva
     cart = get_object_or_404(Cart, user=request.user)
@@ -186,11 +187,10 @@ def contact_form_view(request):
         email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-        contact = ContactFormModelMixin(full_name=full_name, email=email,subject=subject, message=message)
+        contact = ContactFormModelMixin(full_name=full_name, email=email, subject=subject, message=message)
         contact.save()
         return HttpResponseRedirect(reverse('contact_success'))
     return render(request, 'shop/contact_form.html', context)
-
 
 
 def contact_success(request):
