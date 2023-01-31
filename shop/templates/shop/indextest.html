@@ -268,23 +268,22 @@
     <!-- Search Bar -->
     {% include 'shop/search-bar.html' %}
 
-
+      <div class="row">
+ {% for product in page_obj %}
     <div class="container clearfix">
-
         <div class="shoe-details-left text-dark">
 
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/nike.svg" alt="logo" class="logo"/>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/nike.svg" alt="logo" class="logo"/> <!-- logo marque -->
 
             <div class="product-title text-dark">
-                Air Structure <strong>19</strong>
+               {{ product.name }} <strong>19</strong>
             </div>
 
             <div class="product-description text-dark">
-                Dynamic Support and Nike Zoom Air come together for a more supportive feel with high-speed
-                responsiveness.
+                {{ product.description }}
             </div>
 
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/shoe.png" alt="shoe"
+            <img src="{{ product.image.url }}" alt="shoe"
                  class="product-shot animated fadeInLeft"/>
 
             <div class="product-price text-dark">12,995</div>
@@ -295,6 +294,7 @@
 
 
         </div> <!-- end shoe details-left -->
+
 
         <div class="shoe-details-right">
 
@@ -374,8 +374,8 @@
         <div class="close-button">&times;</div>
 
     </div>
-
-
+{% endfor %}
+      </div>
     <!-- include pagination.html -->
     {% include 'shop/pagination.html' %}
 
