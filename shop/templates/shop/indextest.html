@@ -2,7 +2,15 @@
 
 {% block content %}
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+        .container {
+            width: 25%;
+            color: black;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            margin: 30px auto;
+        }
 
         *, *:before, *:after {
             box-sizing: border-box;
@@ -13,14 +21,6 @@
             font: 12px/18px "Lato", Arial, sans-serif;
         }
 
-        .container {
-            background: white;
-            width: 740px;
-            margin: 50px auto;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: -1px 15px 30px -6px #c4c4c4;
-        }
 
         strong {
             font-weight: 900;
@@ -255,127 +255,120 @@
             height: 0;
         }
 
-        .container {
-            /* width: 740px; */
-            width: 33%;
-            color: black;
-            display: flex;
-            justify-content: space-between;
-            margin: auto;
-        }
 
     </style>
     <!-- Search Bar -->
     {% include 'shop/search-bar.html' %}
 
-      <div class="row">
- {% for product in page_obj %}
-    <div class="container clearfix">
-        <div class="shoe-details-left text-dark">
+    <div class="row">
+        {% for product in page_obj %}
+            <div class="container clearfix">
+                <div class="shoe-details-left text-dark">
 
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/nike.svg" alt="logo" class="logo"/> <!-- logo marque -->
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/nike.svg" alt="logo" class="logo"/>
+                    <!-- logo marque -->
 
-            <div class="product-title text-dark">
-               {{ product.name }} <strong>19</strong>
-            </div>
+                    <div class="product-title text-dark">
+                        {{ product.name }} <strong>19</strong>
+                    </div>
 
-            <div class="product-description text-dark">
-                {{ product.description }}
-            </div>
+                    <div class="product-description text-dark">
+                        {{ product.description }}
+                    </div>
 
-            <img src="{{ product.image.url }}" alt="shoe"
-                 class="product-shot animated fadeInLeft"/>
+                    <img src="{{ product.image.url }}" alt="shoe"
+                         class="product-shot animated fadeInLeft"/>
 
-            <div class="product-price text-dark">12,995</div>
+                    <div class="product-price text-dark">12,995</div>
 
-            <div class="product-price-details text-dark">
-                EMI starts from 534 + Rs 100 Delivery
-            </div>
-
-
-        </div> <!-- end shoe details-left -->
+                    <div class="product-price-details text-dark">
+                        EMI starts from 534 + Rs 100 Delivery
+                    </div>
 
 
-        <div class="shoe-details-right">
+                </div> <!-- end shoe details-left -->
 
-            <span class="product-title">Air Structure <strong>19</strong></span>
-            <span class="label">New</span>
 
-            <div class="product-category">
-                Running Collections
-            </div>
+                <div class="shoe-details-right">
 
-            <div class="product-stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star gray"></i>
-                <i class="fa fa-star gray"></i>
-            </div>
+                    <span class="product-title">Air Structure <strong>19</strong></span>
+                    <span class="label">New</span>
 
-            <ul class="product-tabs">
-                <li class="active"><a href="#pane1">Description</a></li>
-                <li><a href="#pane2">Details</a></li>
-                <li><a href="#pane3">Reviews</a></li>
-                <li><a href="#pane4">Size & Fit</a></li>
-            </ul>
+                    <div class="product-category">
+                        Running Collections
+                    </div>
 
-            <div class="tab-content">
-                <div id="pane1" class="tab-pane active">
-                    Dynamic Support and Nike Zoom Air come together for a more supportive feel with high-speed
-                    responsiveness.
-                </div>
-                <div id="pane2" class="tab-pane">
+                    <div class="product-stars">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star gray"></i>
+                        <i class="fa fa-star gray"></i>
+                    </div>
 
-                </div>
+                    <ul class="product-tabs">
+                        <li class="active"><a href="#pane1">Description</a></li>
+                        <li><a href="#pane2">Details</a></li>
+                        <li><a href="#pane3">Reviews</a></li>
+                        <li><a href="#pane4">Size & Fit</a></li>
+                    </ul>
 
-                <div id="pane3" class="tab-pane">
+                    <div class="tab-content">
+                        <div id="pane1" class="tab-pane active">
+                            Dynamic Support and Nike Zoom Air come together for a more supportive feel with high-speed
+                            responsiveness.
+                        </div>
+                        <div id="pane2" class="tab-pane">
 
-                </div>
+                        </div>
 
-                <div id="pane4" class="tab-pane">
+                        <div id="pane3" class="tab-pane">
 
-                </div>
-            </div> <!-- end tab-content -->
+                        </div>
 
-            <h2>Size</h2>
-            <ul class="sizes">
-                <li><a href="#">07</a></li>
-                <li><a href="#">08</a></li>
-                <li class="active"><a href="#">09</a></li>
-                <li><a href="#">10</a></li>
-                <li><a href="#">11</a></li>
-            </ul>
+                        <div id="pane4" class="tab-pane">
 
-            <h2>Colour</h2>
-            <ul class="colours">
-                <li class="active"><a href="#"><span class="circle blue"></span></a></li>
-                <li>
-                    <a href="#">
-                        <span class="circle orange"></span>
+                        </div>
+                    </div> <!-- end tab-content -->
+
+                    <h2>Size</h2>
+                    <ul class="sizes">
+                        <li><a href="#">07</a></li>
+                        <li><a href="#">08</a></li>
+                        <li class="active"><a href="#">09</a></li>
+                        <li><a href="#">10</a></li>
+                        <li><a href="#">11</a></li>
+                    </ul>
+
+                    <h2>Colour</h2>
+                    <ul class="colours">
+                        <li class="active"><a href="#"><span class="circle blue"></span></a></li>
+                        <li>
+                            <a href="#">
+                                <span class="circle orange"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="circle yellow"></span></a>
+                        </li>
+                        <li><a href="#"><span class="circle black"></span></a></li>
+                    </ul>
+
+                    <a href="#" class="btn btn-primary">
+                        Add to Cart
                     </a>
-                </li>
-                <li>
-                    <a href="#"><span class="circle yellow"></span></a>
-                </li>
-                <li><a href="#"><span class="circle black"></span></a></li>
-            </ul>
 
-            <a href="#" class="btn btn-primary">
-                Add to Cart
-            </a>
+                    <a href="#" class="btn btn-secondary">
+                        Wishlist
+                    </a>
 
-            <a href="#" class="btn btn-secondary">
-                Wishlist
-            </a>
+                </div> <!-- end shoe-details-right -->
 
-        </div> <!-- end shoe-details-right -->
+                <div class="close-button">&times;</div>
 
-        <div class="close-button">&times;</div>
-
+            </div>
+        {% endfor %}
     </div>
-{% endfor %}
-      </div>
     <!-- include pagination.html -->
     {% include 'shop/pagination.html' %}
 
