@@ -64,6 +64,26 @@ def index(request):
 
     return render(request, 'shop/index.html', context)
 
+def indextest(request):
+    products = Product.objects.all().order_by('-id')
+    categories = Category.objects.all()
+
+    if name := request.GET.get('search'):
+        if request.method == 'GET':
+            products = Product.objects.filter(name__icontains=name)
+
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'products': products,
+        'categories': categories,
+        'page_obj': page_obj,
+        'paginator': paginator,
+    }
+
+    return render(request, 'shop/indextest.html', context)
 
 def filter_by_category(request, slug):
     categories = Category.objects.all()

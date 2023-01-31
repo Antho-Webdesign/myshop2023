@@ -1,12 +1,14 @@
 from django.urls import path
 
 from accounts.views import profile, edit_profile
-from shop.views import contact_success, index, add_to_cart, product_detail, cart, delete_cart, delete_product_cart, filter_by_category, \
-    checkout, contact_form_view
+from shop.views import contact_success, index, add_to_cart, product_detail, cart, delete_cart, delete_product_cart, \
+    filter_by_category, \
+    checkout, contact_form_view, indextest
 
 urlpatterns = [
     # Home
     path('', index, name='home'),
+    path('indextest/', indextest, name='indextest'),
     # Navbar
     # path('navbars/', navbar, name='navbars'),
     # Details produit
