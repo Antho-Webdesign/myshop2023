@@ -47,17 +47,18 @@
                             </a>
                         </div>
 
-                        {% if user.is_authenticated %}
+
                         <div class="btn-right-index">
                             <a href="{% url 'home' %}" class="btn btn-primary">
                                 Retour à l'accueil
                             </a>
                         </div>
                         {% else %}
-                             <p class="bg-gradient fs-5 mt-5">
-                                <a class="text-warning" href="{% url 'login' %}">Connectez-vous pour ajouter au panier</a>
-                            </p>
-                        {% endif %}
+                            <div class="btn-right-index">
+                                <a class="text text-warning fs-2" style="font-size: 0.7em !important;" href="{% url 'login' %}">
+                                    Connectez-vous pour ajouter au panier
+                                </a>
+                            </div>
                     {% endif %}
                 </div>
         </div>
