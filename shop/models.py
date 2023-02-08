@@ -1,13 +1,25 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
-from django.views.generic import ListView
 from ecommerce.settings import AUTH_USER_MODEL
 
 user = get_user_model()
 
 
-# Create your models here.
+# Tag model
+class Tag(models.Model):
+    name = models.CharField(max_length=120)
+    slug = models.SlugField(max_length=120, unique=True)
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = 'tag'
+        verbose_name_plural = 'tags'
+
+    def __str__(self):
+        return self.name
+
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now=True)
@@ -43,6 +55,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/prod/', default='products/prod/default.png', blank=True, null=True)
     stock = models.IntegerField(default=0)
     marque_produit = models.CharField(max_length=120, default='')
+    tags = models.ManyToManyField(Tag, blank=True)
 
     # Affiche le nom du produit
     def __str__(self):

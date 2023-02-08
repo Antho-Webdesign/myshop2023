@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, ContactFormModelMixin, Product, Order, Cart
+from .models import Category, ContactFormModelMixin, Product, Order, Cart, Tag
 
 
 class ContactFormModelMixinAdmin(admin.ModelAdmin):
@@ -13,6 +13,7 @@ class ContactFormModelMixinAdmin(admin.ModelAdmin):
                 'subject', 'message', 'cc_myself')
 
 
+admin.site.register(Tag)
 admin.site.register(Product)
 admin.site.register(Category)
 admin.site.register(Cart)

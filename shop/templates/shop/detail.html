@@ -3,47 +3,67 @@
 {% block content %}
 
 
-<div class="product_details_box bg-gradient">
+    <div class="product_details_box bg-gradient">
 
-    <h1 class="text-center titre-detail pt-4 mb-5">
-        Bienvenue dans l'univers de : 
-        <br>
-        <span class="text-info fw-bold fst-italic" style="font-size: 1.5em;">
+        <h1 class="text-center titre-detail pt-4 mb-5">
+            Bienvenue dans l'univers de :
+            <br>
+            <span class="text-info fw-bold fst-italic" style="font-size: 1.5em;">
         {{ product.marque_produit }}</span>
-    </h1>
+        </h1>
 
-    <!-- separateur -->
-    <div class="separateur border border-1">
-    </div>
-
-    <div class="details_box">
-
-        <div class="col-md-6 container-img" style="display: flex; justify-content: center;">
-            <div class="box-img">
-                <img src="{{ product.image.url }}" class="img-detail" alt="">
-            </div>
-            <!--
-                <img class="image" src="https://www.apple.com/v/macbook-pro-13/m/images/overview/retina_hero_screen__gddr9b8m4kuq_large.jpg" alt="">
-            -->
+        <!-- separateur -->
+        <div class="separateur border border-1">
         </div>
-        <div class="container-text col-md-6 text-center justify-content-center flex-column fs-2" style="display: flex;">
-            <div class="text-warning display-3">
-                {{ product.name }}
-            </div>
 
-            <div class="product-description">
-                {{ product.description }}
-            </div>
+        <div class="details_box">
 
-            <div class="text-danger prix">
-                Prix : {{ price_ttc }}€ <small class="text-muted">TTC</small>
+            <div class="col-md-6 container-img" style="display: flex; justify-content: center;">
+                <div class="box-img">
+                    <img src="{{ product.image.url }}" class="img-detail" alt="">
+                </div>
+                <!--
+                    <img class="image" src="https://www.apple.com/v/macbook-pro-13/m/images/overview/retina_hero_screen__gddr9b8m4kuq_large.jpg" alt="">
+                -->
             </div>
+            <div class="container-text col-md-6 text-center justify-content-center flex-column fs-2"
+                 style="display: flex;">
+                <div class="text-warning display-3">
+                    {{ product.name }}
+                </div>
+
+                <div class="product-description">
+                    {{ product.description }}
+                </div>
+
+                {% if product.stock >= 5 %}
+                    <small class="card-text text-center text-muted">
+                        Stock :
+                        <strong class="text text-success">{{ product.stock }}</strong>
+                    </small>
+
+                {% elif product.stock >= 3 and product.stock < 5 %}
+                    <small class="card-text text-center text-muted">
+                        Stock :
+                        <strong class="text text-warning">{{ product.stock }}</strong>
+                    </small>
+
+                {% else %}
+                    <small class="card-text text-center text-muted">
+                        Stock :
+                        <strong class="text qty-red">{{ product.stock }}</strong>
+                    </small>
+                {% endif %}
+
+                <div class="text-danger prix">
+                    Prix : {{ price_ttc }}€ <small class="text-muted">TTC</small>
+                </div>
 
                 <div class="box-btn">
                     {% if user.is_authenticated %}
                         <div class="btn-left-index">
                             <a class="btn btn-success" href="{% url 'add_to_cart' product.slug %}">
-                               Ajouter au panier
+                                Ajouter au panier
                             </a>
                         </div>
 
@@ -53,16 +73,17 @@
                                 Retour à l'accueil
                             </a>
                         </div>
-                        {% else %}
-                            <div class="btn-right-index">
-                                <a class="text text-warning fs-2" style="font-size: 0.7em !important;" href="{% url 'login' %}">
-                                    Connectez-vous pour ajouter au panier
-                                </a>
-                            </div>
+                    {% else %}
+                        <div class="btn-right-index">
+                            <a class="text text-warning fs-2" style="font-size: 0.7em !important;"
+                               href="{% url 'login' %}">
+                                Connectez-vous pour ajouter au panier
+                            </a>
+                        </div>
                     {% endif %}
                 </div>
+            </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

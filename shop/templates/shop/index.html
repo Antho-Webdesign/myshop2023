@@ -3,9 +3,13 @@
 {% block content %}
     <style>
 
-    .btn-index {
-      width: 90%;
-    }
+        .btn-index {
+            width: 90%;
+        }
+
+        .qty-red {
+            color: rgba(255, 0, 0, 0.63);
+        }
 
     </style>
     <!-- Search Bar -->
@@ -24,14 +28,32 @@
 
                     <img src="{{ product.image.url }}" alt="" class="card-ing-top" style="width: 66%;margin: auto;">
 
-                    <div class="card-body" style="  width: 100% !important; display: flex; margin: auto 0; flex-direction: column;">
+                    <div class="card-body"
+                         style="  width: 100% !important; display: flex; margin: auto 0; flex-direction: column;">
 
                         <div id="price price{{ product.id }}"
                              class="card-text mb-5 fw-bold fs-3 text-center text-danger">
-                            Prix (ttc):
-                            <br>
                             {{ product.ttc_price|floatformat:2 }} €
                         </div>
+
+                    {% if product.stock >= 5 %}
+                        <p class="card-text text-center text-muted">
+                            Stock :
+                            <strong class="text text-success">{{ product.stock }}</strong>
+                        </p>
+
+                    {% elif product.stock >= 3 and product.stock < 5 %}
+                        <p class="card-text text-center text-muted">
+                            Stock :
+                            <strong class="text text-warning">{{ product.stock }}</strong>
+                        </p>
+
+                    {% else  %}
+                        <p class="card-text text-center text-muted">
+                            Stock :
+                            <strong class="text qty-red">{{ product.stock }}</strong>
+                        </p>
+                    {% endif %}
 
                         <div class="box-btn">
 

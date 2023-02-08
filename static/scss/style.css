@@ -511,6 +511,8 @@ tr.table-profile {
   display: flex;
   margin: 50px auto;
   align-items: center;
+  justify-content: space-between;
+  width: 90%;
 }
 
 .product-description {
