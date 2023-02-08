@@ -40,8 +40,7 @@ class Product(models.Model):
     price_ttc = models.FloatField(default=0.00, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, default='')
     description = models.TextField(max_length=2500)
-    image = models.ImageField(upload_to='products/prod/', default='products/prod/default.png', blank=True, null=True,
-                              max_length=700)
+    image = models.ImageField(upload_to='products/prod/', default='products/prod/default.png', blank=True, null=True)
     stock = models.IntegerField(default=0)
     marque_produit = models.CharField(max_length=120, default='')
 

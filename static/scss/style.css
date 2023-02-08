@@ -245,7 +245,7 @@ form.card {
   width: 66%;
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 0 auto;
   background: transparent;
   border: none;
 }
@@ -266,7 +266,7 @@ form.card {
 .content-box-product {
   display: flex;
   width: 33%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 /*
@@ -587,7 +587,7 @@ button.btn {
     width: 90% !important;
     display: flex;
     justify-content: center;
-    margin: auto;
+    margin: 0 auto !important;
     background: transparent;
     border: none;
   }
