@@ -3,7 +3,7 @@ from django.urls import path
 from accounts.views import profile, edit_profile
 from shop.views import contact_success, index, add_to_cart, product_detail, cart, delete_cart, delete_product_cart, \
     filter_by_category, \
-    checkout, contact_form_view, indextest
+    checkout, contact_form_view, indextest, detail_test
 
 urlpatterns = [
     # Home
@@ -13,6 +13,8 @@ urlpatterns = [
     # path('navbars/', navbar, name='navbars'),
     # Details produit
     path('product/<str:slug>/', product_detail, name="detail"),
+    # detail-test
+    path('product/test/<str:slug>/', detail_test, name="detail-test"),
     # Ajouter au panier
     path('product/add-to-cart/<str:slug>/', add_to_cart, name='add_to_cart'),
     # Panier

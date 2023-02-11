@@ -64,6 +64,7 @@ def index(request):
 
     return render(request, 'shop/index.html', context)
 
+
 def indextest(request):
     products = Product.objects.all().order_by('-id')
     categories = Category.objects.all()
@@ -84,6 +85,7 @@ def indextest(request):
     }
 
     return render(request, 'shop/indextest.html', context)
+
 
 def filter_by_category(request, slug):
     categories = Category.objects.all()
@@ -121,6 +123,20 @@ def product_detail(request, slug):
         'price_ttc': price_ttc,
     }
     return render(request, 'shop/detail.html', context)
+
+
+def detail_test(request, slug):
+    products = Product.objects.all()
+    categories = Category.objects.all()
+    product = get_object_or_404(Product, slug=slug)
+    price_ttc = product.price * 1.2
+    context = {
+        'product': product,
+        'products': products,
+        'categories': categories,
+        'price_ttc': price_ttc,
+    }
+    return render(request, 'shop/detail-test.html', context)
 
 
 def add_to_cart(request, slug):

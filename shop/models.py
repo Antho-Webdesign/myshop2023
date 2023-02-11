@@ -55,6 +55,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/prod/', default='products/prod/default.png', blank=True, null=True)
     stock = models.IntegerField(default=0)
     marque_produit = models.CharField(max_length=120, default='')
+    logo_marque = models.ImageField(upload_to='products/prod/logo/', default='products/prod/default.png',
+                                    blank=True, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
 
     # Affiche le nom du produit

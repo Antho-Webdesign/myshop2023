@@ -59,6 +59,7 @@
 
                             <div class="btn-left-index">
                                 <a href="{% url 'detail' product.slug %}" class="btn btn-index btn-info">Détails</a>
+                                <a href="{% url 'detail-test' product.slug %}" class="btn btn-index btn-primary">Détails test</a>
                             </div>
 
                             {% if user.is_authenticated %}

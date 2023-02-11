@@ -1,0 +1,382 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+
+        .container-detail {
+            background: white;
+            width: 740px;
+            margin: 75px auto;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: -1px 15px 30px -6px #c4c4c4;
+            display: flex;
+        }
+
+        strong {
+            font-weight: 900;
+        }
+
+        .shoe-details-left {
+            float: left;
+            background: #FF0235;
+            background: linear-gradient(#022AFF, #DB2B0C);
+            width: 270px;
+            color: white;
+            padding: 30px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .shoe-details-left .logo {
+            width: 50%;
+            margin-bottom: 55px;
+        }
+
+        .shoe-details-left .product-title {
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .shoe-details-left .product-description {
+            width: 200px;
+            font-size: 12px;
+        }
+
+        .shoe-details-left .product-shot {
+            width: 250px;
+            margin-left: -54px;
+            margin-top: -20px;
+        }
+
+        .shoe-details-left .product-price, .shoe-details-left .product-price-details {
+            text-align: center;
+        }
+
+        .shoe-details-left .product-price {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .shoe-details-right {
+            float: left;
+            width: 470px;
+            padding: 30px;
+            text-transform: uppercase;
+        }
+
+        .shoe-details-right .product-title {
+            font-size: 2em;
+        }
+
+        .shoe-details-right .label {
+            background: #FF3F2A;
+            color: white;
+            border-radius: 5px;
+            padding: 4px 7px;
+            font-size: 10px;
+            vertical-align: top;
+            margin-left: 10px;
+        }
+
+        .shoe-details-right .product-category {
+            margin: 5px 0 10px;
+        }
+
+        .shoe-details-right .product-stars {
+            margin: 20px 0;
+            font-size: 1.3em;
+        }
+
+        .shoe-details-right .product-tabs {
+            margin-bottom: 20px;
+        }
+
+        .shoe-details-right .product-tabs li {
+            display: inline;
+            margin-right: 10px;
+            padding: 0 7px;
+            color: #FF3F2A;
+        }
+
+        .shoe-details-right .product-tabs li.active {
+            padding-bottom: 3px;
+            border-bottom: 3px solid #FF3F2A;
+        }
+
+        .shoe-details-right .product-tabs li a {
+            color: #CACACA;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .shoe-details-right .product-tabs li a:hover, .shoe-details-right .product-tabs li a:focus {
+            color: #FF3F2A;
+        }
+
+        .shoe-details-right .product-tabs li.active > a {
+            color: #FF3F2A !important;
+        }
+
+        .shoe-details-right .tab-content {
+            text-transform: none;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .shoe-details-right h2 {
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .shoe-details-right .sizes {
+            margin-bottom: 20px;
+        }
+
+        .shoe-details-right .sizes li {
+            display: inline;
+            font-size: 14px;
+            margin-right: 40px;
+            padding: 5px;
+        }
+
+        .shoe-details-right .sizes li.active, .shoe-details-right .sizes li:hover {
+            background: #FF3F2A;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .shoe-details-right .sizes li.active > a, .shoe-details-right .sizes li:hover > a {
+            color: white;
+        }
+
+        .shoe-details-right .sizes li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .shoe-details-right .colours {
+            margin: 20px 0 60px;
+        }
+
+        .shoe-details-right .colours li {
+            display: inline;
+            margin-right: 30px;
+        }
+
+        .shoe-details-right .colours li.active > a {
+            border: 1px solid #00D3EF;
+            border-radius: 100%;
+            padding: 14px 7px 3px 7px;
+        }
+
+        .shoe-details-right .circle {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .shoe-details-right .blue {
+            background: #00D3EF;
+        }
+
+        .shoe-details-right .orange {
+            background: #FF3F2A;
+        }
+
+        .shoe-details-right .yellow {
+            background: #FFD203;
+        }
+
+        .shoe-details-right .black {
+            background: black;
+        }
+
+        .shoe-details-right a.btn {
+            text-decoration: none;
+            background: #CCC;
+            color: white;
+            padding: 14px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+        }
+
+        .shoe-details-right a.btn:hover {
+            background: #d9d9d9;
+        }
+
+        .shoe-details-right a.btn-primary {
+            background: #00D3EF;
+            margin-right: 20px;
+        }
+
+        .shoe-details-right a.btn-primary:hover {
+            background: #0ae2ff;
+        }
+
+        .close-button {
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            font-size: 40px;
+            color: #B8B8B8;
+            background: white;
+            border-radius: 50%;
+            padding: 10px 10px 15px 10px;
+            box-shadow: -1px 3px 20px -6px #c4c4c4;
+        }
+
+        .close-button:hover {
+            background: #fbfafa;
+            cursor: pointer;
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        .shoe-details-left .logo {
+            margin-bottom: 85px;
+        }
+
+        .shoe-details-left .product-price {
+            margin-top: 85px;
+        }
+
+        /* a revoir */
+
+        /* Feuille de style intégrée #11 | http://127.0.0.1:8000/product/test/macbook-pro/ */
+
+        .shoe-details-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shoe-details-right {
+            /* padding: 30px; */
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .container-detail {
+            /* margin: 50px auto; */
+            align-items: center;
+        }
+
+        .shoe-details-right .product-title {
+            display: flex;
+            margin: 0 auto 50px auto;
+        }
+
+        .shoe-details-right .tab-content {
+            display: flex;
+            margin: 0 auto;
+        }
+
+        .box-btn {
+            margin: 50px auto;
+        }
+    </style>
+
+    <h1 class="text-center titre-detail pt-4 mb-5">
+        Bienvenue dans l'univers de :
+        <br>
+        <span class="text-info fw-bold fst-italic" style="font-size: 1.5em;">
+        {{ product.marque_produit }}</span>
+    </h1>
+
+    <!-- separateur -->
+    <div class="separateur border border-1">
+    </div>
+
+    <div class="container-detail clearfix">
+
+        <div class="shoe-details-left text-dark">
+            <img src="{{ product.logo_marque.url }}" class="logo" alt="">
+
+            <img src="{{ product.image.url }}" alt="shoe"
+                 class="product-shot animated fadeInLeft"/>
+
+            <div class="product-price">
+                {% if product.stock >= 5 %}
+                    <small class="card-text text-center text-muted">
+                        stock :
+                        <strong class="text text-success">{{ product.stock }}</strong>
+                    </small>
+
+                {% elif product.stock >= 3 and product.stock < 5 %}
+                    <small class="card-text text-center text-muted">
+                        stock :
+                        <strong class="text text-warning">{{ product.stock }}</strong>
+                    </small>
+
+                {% else %}
+                    <small class="card-text text-center text-muted">
+                        stock :
+                        <strong class="text qty-red">{{ product.stock }}</strong>
+                    </small>
+                {% endif %}
+
+            </div>
+
+
+        </div> <!-- end shoe details-left -->
+
+        <div class="shoe-details-right text-dark">
+
+            <span class="product-title">{{ product.name }}</span>
+            <br>
+            <br>
+
+            <div class="tab-content">
+                <div id="pane1" class="tab-pane active">
+                    {{ product.description }}
+                </div>
+
+            </div> <!-- end tab-content -->
+            <div class="product-stars" style="color: #b01414;">
+                {{ product.price|floatformat:2 }} €
+            </div>
+
+            <div class="box-btn">
+                {% if user.is_authenticated %}
+                    <div class="btn-left-index">
+                        <a class="btn btn-primary" href="{% url 'add_to_cart' product.slug %}">
+                            Ajouter au panier
+                        </a>
+                    </div>
+
+
+                    <div class="btn-right-index">
+                        <a href="{% url 'home' %}" class="btn btn-secondary">
+                            Retour à l'accueil
+                        </a>
+                    </div>
+
+                {% else %}
+                    <div class="btn-right-index">
+                        <a class="text text-warning fs-2" style="font-size: 0.7em !important;"
+                           href="{% url 'login' %}">
+                            Connectez-vous pour ajouter au panier
+                        </a>
+                    </div>
+
+                {% endif %}
+            </div>
+
+        </div> <!-- end shoe-details-right -->
+
+    </div>
+
+
+{% endblock %}
