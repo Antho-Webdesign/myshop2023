@@ -6,6 +6,21 @@ from ecommerce.settings import AUTH_USER_MODEL
 user = get_user_model()
 
 
+class MarqueProduct(models.Model):
+    name = models.CharField(max_length=120)
+    slug = models.SlugField(max_length=120, unique=True)
+    logo = models.ImageField(upload_to='products/prod/logo/', default='products/prod/default.png',
+                             blank=True, null=True)
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = 'marque'
+        verbose_name_plural = 'marques'
+
+    def __str__(self):
+        return self.name
+
+
 # Tag model
 class Tag(models.Model):
     name = models.CharField(max_length=120)
@@ -54,10 +69,8 @@ class Product(models.Model):
     description = models.TextField(max_length=2500)
     image = models.ImageField(upload_to='products/prod/', default='products/prod/default.png', blank=True, null=True)
     stock = models.IntegerField(default=0)
-    marque_produit = models.CharField(max_length=120, default='')
-    logo_marque = models.ImageField(upload_to='products/prod/logo/', default='products/prod/default.png',
-                                    blank=True, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    fabriquant = models.ForeignKey(MarqueProduct, on_delete=models.CASCADE, default='', blank=True, null=True)
 
     # Affiche le nom du produit
     def __str__(self):
