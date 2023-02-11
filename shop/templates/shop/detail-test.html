@@ -286,6 +286,14 @@
         .box-btn {
             margin: 50px auto;
         }
+
+        a.btn:nth-child(8) {
+            display: flex;
+            width: 5%;
+            justify-content: center;
+            margin: auto;
+        }
+
     </style>
 
     <h1 class="text-center titre-detail pt-4 mb-5">
@@ -376,6 +384,6 @@
         </div> <!-- end shoe-details-right -->
 
     </div>
-
+    <a class="btn btn-warning" href="{% url 'home' %}">Retour</a>
 
 {% endblock %}
