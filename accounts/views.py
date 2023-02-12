@@ -40,8 +40,10 @@ def login_user(request):
         password = request.POST.get("password")
 
         if user := authenticate(request, username=username, password=password):
+            messages.success(request, 'You are now logged in')
             login(request, user)
             return redirect('home')
+
     return render(request, 'accounts/login.html', {'user': user})
 
 
