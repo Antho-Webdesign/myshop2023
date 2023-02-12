@@ -1,35 +1,54 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
-<style>
+    <style>
 
-/* Élément | http://127.0.0.1:8000/product/xdj-700/ */
+        .container-text > img:nth-child(1) {
+            width: 33%;
+            margin: auto;
+        }
 
-.container-text > img:nth-child(1) {
-  width: 33%;
-  margin: auto;
-}
+        .titre-detail {
+            margin-bottom: 0 !important;
+        }
 
-/* style.css | http://127.0.0.1:8000/static/scss/style.css */
+        .text-warning {
+            /* margin: 50px auto; */
+            margin: 0 auto;
+        }
 
-.text-warning {
-  /* margin: 50px auto; */
-  margin: 0 auto;
-}
+        .img-detail {
+            width: 100%;
+            height: 100%;
+        }
 
-</style>
+        .logo-detail {
+            width: 20%;
+            margin: auto;
+            justify-content: center;
+            display: flex;
+        }
 
-<div class="product_details_box bg-gradient">
+        @media screen and (min-width: 350px) and (max-width: 680px) {
+            .logo-detail {
+                width: 50% !important;
+                margin: auto;
+                justify-content: center;
+                display: flex;
+            }
+        }
+    </style>
 
-    <h1 class="text-center titre-detail pt-4 mb-5">
-        Bienvenue dans l'univers de : 
-        <br>
-        <span class="text-info fw-bold fst-italic" style="font-size: 1.5em;">
-        {{ product.fabriquant.name }}</span>
-        
-    </h1>
+    <div class="product_details_box bg-gradient">
+
+        <h1 class="text-center titre-detail pt-4 mb-5">
+            Bienvenue dans l'univers de :
+        </h1>
+
+        <img class="logo-detail" src="{{ product.fabriquant.logo.url }}" alt="">
+    </div>
     <!-- separateur -->
-    <div class="separateur border border-1">
+    <div class="separateur border border-1" style="margin-top: 20px;">
     </div>
 
     <div class="details_box">
@@ -43,7 +62,10 @@
             -->
         </div>
         <div class="container-text col-md-6 text-center justify-content-center flex-column fs-2" style="display: flex;">
-        <img src="{{ product.fabriquant.logo.url }}">
+            <div class="text-warning display-3">
+                {{ product.fabriquant.name }}
+            </div>
+
             <div class="text-warning display-3">
                 {{ product.name }}
             </div>
@@ -56,30 +78,30 @@
                 Prix : {{ price_ttc }}€ <small class="text-muted">TTC</small>
             </div>
 
-                <div class="box-btn">
-                    {% if user.is_authenticated %}
-                        <div class="btn-left-index">
-                            <a class="btn btn-success" href="{% url 'add_to_cart' product.slug %}">
-                               Ajouter au panier
-                            </a>
-                        </div>
+            <div class="box-btn">
+                {% if user.is_authenticated %}
+                    <div class="btn-left-index">
+                        <a class="btn btn-success" href="{% url 'add_to_cart' product.slug %}">
+                            Ajouter au panier
+                        </a>
+                    </div>
 
 
-                        <div class="btn-right-index">
-                            <a href="{% url 'home' %}" class="btn btn-primary">
-                                Retour à l'accueil
-                            </a>
-                        </div>
-                        {% else %}
-                            <div class="btn-right-index">
-                                <a class="text text-warning fs-2" style="font-size: 0.7em !important;" href="{% url 'login' %}">
-                                    Connectez-vous pour ajouter au panier
-                                </a>
-                            </div>
-                    {% endif %}
-                </div>
+                    <div class="btn-right-index">
+                        <a href="{% url 'home' %}" class="btn btn-primary">
+                            Retour à l'accueil
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="btn-right-index">
+                        <a class="text text-warning fs-2" style="font-size: 0.7em !important;" href="{% url 'login' %}">
+                            Connectez-vous pour ajouter au panier
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
+    </div>
 
 {% endblock %}
