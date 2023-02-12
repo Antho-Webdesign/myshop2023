@@ -1,7 +1,23 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
+<style>
 
+/* Élément | http://127.0.0.1:8000/product/xdj-700/ */
+
+.container-text > img:nth-child(1) {
+  width: 33%;
+  margin: auto;
+}
+
+/* style.css | http://127.0.0.1:8000/static/scss/style.css */
+
+.text-warning {
+  /* margin: 50px auto; */
+  margin: 0 auto;
+}
+
+</style>
 
 <div class="product_details_box bg-gradient">
 
@@ -9,9 +25,9 @@
         Bienvenue dans l'univers de : 
         <br>
         <span class="text-info fw-bold fst-italic" style="font-size: 1.5em;">
-        {{ product.marque_produit }}</span>
+        {{ product.fabriquant.name }}</span>
+        
     </h1>
-
     <!-- separateur -->
     <div class="separateur border border-1">
     </div>
@@ -27,6 +43,7 @@
             -->
         </div>
         <div class="container-text col-md-6 text-center justify-content-center flex-column fs-2" style="display: flex;">
+        <img src="{{ product.fabriquant.logo.url }}">
             <div class="text-warning display-3">
                 {{ product.name }}
             </div>

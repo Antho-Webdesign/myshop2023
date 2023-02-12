@@ -1,6 +1,11 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
+    <style>
+    button.btn.btn-success {
+        background: #069c04;
+    }
+    </style>
 <div class="container">
     <div class="row">
 
@@ -20,7 +25,7 @@
 
             <div class="box-btn">
                 <div class="btn-left">
-                    <a type="submit" class=" btn btn-success">Connexion</a>
+                    <button type="submit" class="btn btn-success">Connexion</button>
                 </div>
                 <div class="btn-right">
                     <a href="{% url 'password_reset_form' %}" class="btn btn-warning">Mot de passe oublié ?</a>

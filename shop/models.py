@@ -1,13 +1,40 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
-from django.views.generic import ListView
 from ecommerce.settings import AUTH_USER_MODEL
 
 user = get_user_model()
 
 
-# Create your models here.
+class MarqueProduct(models.Model):
+    name = models.CharField(max_length=120)
+    slug = models.SlugField(max_length=120, unique=True)
+    logo = models.ImageField(upload_to='products/prod/logo/', default='products/prod/default.png',
+                             blank=True, null=True)
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = 'marque'
+        verbose_name_plural = 'marques'
+
+    def __str__(self):
+        return self.name
+
+
+# Tag model
+class Tag(models.Model):
+    name = models.CharField(max_length=120)
+    slug = models.SlugField(max_length=120, unique=True)
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = 'tag'
+        verbose_name_plural = 'tags'
+
+    def __str__(self):
+        return self.name
+
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now=True)
@@ -21,6 +48,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+INFOS = (
+    ('new', 'New'),
+    ('promo', 'Promo'),
+    ('sold', 'Sold'),
+    ('', 'None'),
+)
 
 """
 Product model
@@ -40,10 +74,11 @@ class Product(models.Model):
     price_ttc = models.FloatField(default=0.00, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, default='')
     description = models.TextField(max_length=2500)
-    image = models.ImageField(upload_to='products/prod/', default='products/prod/default.png', blank=True, null=True,
-                              max_length=700)
+    image = models.ImageField(upload_to='products/prod/', default='products/prod/default.png', blank=True, null=True)
     stock = models.IntegerField(default=0)
-    marque_produit = models.CharField(max_length=120, default='')
+    tags = models.ManyToManyField(Tag, blank=True)
+    fabriquant = models.ForeignKey(MarqueProduct, on_delete=models.CASCADE, default='', blank=True, null=True)
+    info = models.CharField(max_length=120, choices=INFOS, default='', blank=True, null=True)
 
     # Affiche le nom du produit
     def __str__(self):
