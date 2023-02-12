@@ -724,6 +724,11 @@ button.btn {
     width: 100% !important;
   }
 }
+@media screen and (max-width: 455px) {
+  .updt-profile {
+    width: 66% !important;
+  }
+}
 .container-text > img:nth-child(1) {
   width: 33%;
   margin: auto;
@@ -734,12 +739,17 @@ button.btn {
 }
 
 .text-warning {
-  /* margin: 50px auto; */
   margin: 0 auto;
 }
 
-.img-detail {
+.box-img {
+  display: flex;
   width: 100%;
+  justify-content: center;
+}
+
+.img-detail {
+  width: 75%;
   height: 100%;
 }
 
@@ -750,17 +760,21 @@ button.btn {
   display: flex;
 }
 
+.fab-name {
+  font-size: 0.8em;
+}
+
+@media screen and (min-width: 350px) and (max-width: 995px) {
+  .fab-name {
+    margin-top: 50px !important;
+  }
+}
 @media screen and (min-width: 350px) and (max-width: 680px) {
   .logo-detail {
     width: 50% !important;
     margin: auto;
     justify-content: center;
     display: flex;
-  }
-}
-@media screen and (max-width: 455px) {
-  .updt-profile {
-    width: 66% !important;
   }
 }
 /*
