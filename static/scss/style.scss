@@ -801,12 +801,17 @@ button.btn {
 }
 
 .text-warning {
-  /* margin: 50px auto; */
   margin: 0 auto;
 }
 
-.img-detail {
+.box-img {
+  display: flex;
   width: 100%;
+  justify-content: center;
+}
+
+.img-detail {
+  width: 75%;
   height: 100%;
 }
 
@@ -815,6 +820,16 @@ button.btn {
   margin: auto;
   justify-content: center;
   display: flex;
+}
+
+.fab-name {
+  font-size: 0.8em;
+}
+
+@media screen and (min-width: 350px) and (max-width: 995px) {
+  .fab-name {
+    margin-top: 50px !important;
+  }
 }
 
 @media screen and (min-width: 350px) and (max-width: 680px) {
