@@ -98,11 +98,12 @@ div.dropstart:nth-child(2) > li:nth-child(1) > a:nth-child(1) {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Connexion</a>
                                 </li>
-
+                                {% comment %}
                                 <li class="nav-item">
                                     <a class="nav-link text-dark text-dropdown"
                                        href="{% url 'signup' %}">Inscription</a>
                                 </li>
+                                {% endcomment %}
                             {% endif %}
                         </ul>
                     </li>
