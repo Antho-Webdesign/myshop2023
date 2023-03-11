@@ -13,6 +13,12 @@
             border: none;
         }
 
+        @media screen and (max-width: 475px) {
+            .navbar {
+              padding: 5px !important;
+            }
+        }
+
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-dark text-light">
@@ -144,10 +150,13 @@
                                     <a class="nav-link text-dark text-dropdown" href="{% url 'login' %}">Connexion</a>
                                 </li>
 
+                                {% comment %}
                                 <li class="nav-item">
                                     <a class="nav-link text-dark text-dropdown"
                                        href="{% url 'signup' %}">Inscription</a>
                                 </li>
+                                {% endcomment %}
+
                             {% endif %}
                         </ul>
                     </li>
